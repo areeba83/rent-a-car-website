@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rent-a-Car - Pakistan ki Apni Car Rental Company</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Inter", sans-serif;
+      }
+
+      body {
+        background-color: #f4f7fc;
+        overflow-x: hidden;
+      }
+
+      /* Navbar */
+      .navbar {
+        background: #0b2b3b;
+        padding: 0.8rem 0;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+      .navbar-brand {
+        font-size: 1.8rem;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        background: linear-gradient(135deg, #fff, #ffe6b3);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .navbar-brand i {
+        background: #ffb347;
+        padding: 8px;
+        border-radius: 50%;
+        margin-right: 10px;
+        color: #0b2b3b;
+        font-size: 1.4rem;
+      }
+      .nav-link {
+        color: rgba(255, 255, 255, 0.9) !important;
+        font-weight: 500;
+        margin: 0 8px;
+        transition: 0.3s;
+      }
+      .nav-link:hover {
+        color: #ffb347 !important;
+        transform: translateY(-2px);
+      }
+      .login-btn {
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50px;
+        padding: 8px 25px !important;
+      }
+
+      /* Hero Slider */
+      .hero-slider {
+        position: relative;
+        width: 100%;
+        height: 450px;
+        overflow: hidden;
+      }
+      .slider-container {
+        display: flex;
+        width: 400%;
+        height: 100%;
+        animation: slide 20s infinite;
+      }
+      .slide {
+        width: 25%;
+        height: 100%;
+        position: relative;
+      }
+      .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(0.7);
+      }
+      .slide-content {
+        position: absolute;
+        top: 50%;
+        left: 10%;
+        transform: translateY(-50%);
+        color: white;
+        z-index: 2;
+        max-width: 600px;
+      }
+      .slide-content h2 {
+        font-size: 3rem;
+        font-weight: 800;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+      }
+      .slide-content p {
+        font-size: 1.1rem;
+        margin-bottom: 25px;
+        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+      }
+      .slide-content .btn {
+        background: #ffb347;
+        color: #0b2b3b;
+        font-weight: 600;
+        padding: 10px 30px;
+        border-radius: 50px;
+        border: none;
+      }
+      .slider-dots {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+        z-index: 10;
+      }
+      .dot {
+        width: 10px;
+        height: 10px;
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 50%;
+        cursor: pointer;
+      }
+      .dot.active {
+        background: #ffb347;
+      }
+      @keyframes slide {
+        0%,
+        20% {
+          transform: translateX(0);
+        }
+        25%,
+        45% {
+          transform: translateX(-25%);
+        }
+        50%,
+        70% {
+          transform: translateX(-50%);
+        }
+        75%,
+        95% {
+          transform: translateX(-75%);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+
+      /* Badge Cards Section */
+      .badge-cards {
+        padding: 60px 0;
+        background: white;
+      }
+      .badge-card {
+        background: #fff;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+        transition: 0.3s;
+        position: relative;
+        height: 100%;
+        cursor: pointer;
+      }
+      .badge-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.2);
+      }
+      .badge-img {
+        height: 180px;
+        position: relative;
+      }
+      .badge-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .badge-tag {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        padding: 4px 12px;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        z-index: 2;
+      }
+      .badge-new {
+        background: #10b981;
+        color: white;
+      }
+      .badge-hot {
+        background: #ef4444;
+        color: white;
+      }
+      .badge-top {
+        background: #f59e0b;
+        color: white;
+      }
+      .badge-content {
+        padding: 15px;
+      }
+      .badge-content h4 {
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 3px;
+      }
+      .badge-content p {
+        color: #6b7280;
+        font-size: 0.8rem;
+        margin-bottom: 5px;
+      }
+      .badge-price {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #0b2b3b;
+      }
+      .badge-price span {
+        font-size: 0.7rem;
+        font-weight: 400;
+        color: #9ca3af;
+      }
+
+      /* Main Cars Section with Filter */
+      .cars-main-section {
+        padding: 60px 0;
+        background: #f4f7fc;
+      }
+      .filter-sidebar {
+        background: white;
+        border-radius: 20px;
+        padding: 25px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        position: sticky;
+        top: 100px;
+      }
+      .filter-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: #0b2b3b;
+      }
+      .filter-group {
+        margin-bottom: 25px;
+        border-bottom: 1px solid #e5e7eb;
+        padding-bottom: 20px;
+      }
+      .filter-group h6 {
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: #374151;
+      }
+      .filter-option {
+        display: flex;
+        align-items: center;
+        margin-bottom: 8px;
+        cursor: pointer;
+      }
+      .filter-option input[type="checkbox"] {
+        margin-right: 10px;
+        width: 16px;
+        height: 16px;
+        accent-color: #ffb347;
+      }
+      .filter-option label {
+        font-size: 0.9rem;
+        color: #4b5563;
+        cursor: pointer;
+        flex: 1;
+      }
+      .filter-option .count {
+        color: #9ca3af;
+        font-size: 0.8rem;
+      }
+      .price-range {
+        padding: 10px 0;
+      }
+      .price-inputs {
+        display: flex;
+        gap: 10px;
+        margin-top: 15px;
+      }
+      .price-inputs input {
+        width: 50%;
+        padding: 6px;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        font-size: 0.9rem;
+      }
+      .apply-filter-btn {
+        background: #0b2b3b;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 8px;
+        font-weight: 600;
+        width: 100%;
+        transition: 0.3s;
+      }
+      .apply-filter-btn:hover {
+        background: #ffb347;
+        color: #0b2b3b;
+      }
+
+      /* Car Cards Grid */
+      .cars-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 20px;
+      }
+      .car-card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        transition: 0.3s;
+        position: relative;
+        cursor: pointer;
+      }
+      .car-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.15);
+      }
+      .car-card-img {
+        height: 160px;
+        position: relative;
+        overflow: hidden;
+      }
+      .car-card-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: 0.5s;
+      }
+      .car-card:hover .car-card-img img {
+        transform: scale(1.1);
+      }
+      .car-status {
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        background: #10b981;
+        color: white;
+        padding: 3px 10px;
+        border-radius: 50px;
+        font-size: 0.65rem;
+        font-weight: 600;
+        z-index: 2;
+      }
+      .car-type {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        background: rgba(255, 255, 255, 0.9);
+        color: #0b2b3b;
+        padding: 3px 10px;
+        border-radius: 50px;
+        font-size: 0.65rem;
+        font-weight: 600;
+        backdrop-filter: blur(4px);
+        z-index: 2;
+      }
+      .car-card-body {
+        padding: 15px;
+      }
+      .car-card-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 3px;
+        color: #0b2b3b;
+      }
+      .car-card-meta {
+        color: #6b7280;
+        font-size: 0.8rem;
+        margin-bottom: 8px;
+      }
+      .car-card-meta i {
+        color: #ffb347;
+        margin-right: 3px;
+      }
+      .car-card-price {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #0b2b3b;
+        margin: 8px 0;
+      }
+      .car-card-price span {
+        font-size: 0.7rem;
+        font-weight: 400;
+        color: #9ca3af;
+      }
+      .car-features-sm {
+        display: flex;
+        gap: 12px;
+        font-size: 0.75rem;
+        color: #6b7280;
+        margin: 8px 0;
+      }
+      .car-features-sm i {
+        color: #ffb347;
+      }
+      .book-btn-sm {
+        background: #0b2b3b;
+        color: white;
+        border: none;
+        padding: 8px;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 0.85rem;
+        width: 100%;
+        transition: 0.3s;
+      }
+      .book-btn-sm:hover {
+        background: #ffb347;
+        color: #0b2b3b;
+      }
+
+      /* Pagination */
+      .pagination-container {
+        margin-top: 40px;
+        display: flex;
+        justify-content: center;
+      }
+      .pagination {
+        gap: 5px;
+      }
+      .page-link {
+        border-radius: 6px;
+        color: #0b2b3b;
+        border: 1px solid #e5e7eb;
+        padding: 6px 12px;
+        font-size: 0.9rem;
+      }
+      .page-link:hover {
+        background: #ffb347;
+        color: #0b2b3b;
+        border-color: #ffb347;
+      }
+
+      /* Footer */
+      footer {
+        background: #0f172a;
+        color: white;
+        padding: 40px 0 20px;
+        margin-top: 40px;
+      }
+      .footer-links {
+        list-style: none;
+        padding: 0;
+      }
+      .footer-links li {
+        margin-bottom: 8px;
+      }
+      .footer-links a {
+        color: #94a3b8;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: 0.3s;
+      }
+      .footer-links a:hover {
+        color: #ffb347;
+      }
+
+      @media (max-width: 768px) {
+        .hero-slider {
+          height: 350px;
+        }
+        .slide-content h2 {
+          font-size: 2rem;
+        }
+        .filter-sidebar {
+          position: static;
+          margin-bottom: 30px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <i class="bi bi-car-front-fill"></i>
+          Rent-a-Car
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#badge-cards">New Cars</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#cars-section">All Cars</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link login-btn" href="login.html">
+                <i class="bi bi-person-circle me-1"></i> Login
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="register.html">Register</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Slider -->
+    <section class="hero-slider" id="home">
+      <div class="slider-container">
+        <div class="slide">
+          <img
+            src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=1600&h=800&fit=crop"
+            alt="Sports Car"
+          />
+          <div class="slide-content">
+            <h2>اپنی ڈرائیو کرو</h2>
+            <p>
+              Luxury sports cars at affordable prices. Starting at just PKR
+              5000/day
+            </p>
+            <a href="#cars-section" class="btn">Explore Now</a>
+          </div>
+        </div>
+        <div class="slide">
+          <img
+            src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=1600&h=800&fit=crop"
+            alt="SUV"
+          />
+          <div class="slide-content">
+            <h2>Family SUVs</h2>
+            <p>
+              Spacious, comfortable, perfect for road trips. Book now with 20%
+              off
+            </p>
+            <a href="#cars-section" class="btn">View SUVs</a>
+          </div>
+        </div>
+        <div class="slide">
+          <img
+            src="https://images.unsplash.com/photo-1550355291-bbee04a92027?w=1600&h=800&fit=crop"
+            alt="Electric Car"
+          />
+          <div class="slide-content">
+            <h2>Go Electric</h2>
+            <p>Eco-friendly, zero emissions. Special launch prices available</p>
+            <a href="#cars-section" class="btn">Rent Electric</a>
+          </div>
+        </div>
+        <div class="slide">
+          <img
+            src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=1600&h=800&fit=crop"
+            alt="Luxury"
+          />
+          <div class="slide-content">
+            <h2>Luxury Collection</h2>
+            <p>Mercedes, BMW, Audi - experience the premium feel</p>
+            <a href="#cars-section" class="btn">Book Luxury</a>
+          </div>
+        </div>
+      </div>
+      <div class="slider-dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    </section>
+
+    <!-- Badge Cards Section (New, Hot, Top Selling) -->
+    <section class="badge-cards" id="badge-cards">
+      <div class="container">
+        <div class="text-center mb-4">
+          <h2 class="display-5 fw-bold">Trending Now</h2>
+          <p class="text-muted">Most popular choices among our customers</p>
+        </div>
+        <div class="row g-3" id="badgeCardsContainer">
+          <!-- Dynamic Badge Cards will be injected here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Cars Section with Filter Sidebar -->
+    <section class="cars-main-section" id="cars-section">
+      <div class="container">
+        <div class="row">
+          <!-- Filter Sidebar -->
+          <div class="col-lg-3">
+            <div class="filter-sidebar">
+              <h4 class="filter-title">Filter Cars</h4>
+
+              <div class="filter-group">
+                <h6><i class="bi bi-search me-2"></i>Search</h6>
+                <input
+                  type="text"
+                  class="form-control form-control-sm"
+                  placeholder="Car name..."
+                  id="searchInput"
+                />
+              </div>
+
+              <div class="filter-group">
+                <h6><i class="bi bi-tags me-2"></i>Brands</h6>
+                <div id="brandFilters">
+                  <!-- Brands will be populated dynamically -->
+                </div>
+              </div>
+
+              <div class="filter-group">
+                <h6><i class="bi bi-car-front me-2"></i>Car Type</h6>
+                <div id="typeFilters">
+                  <!-- Types will be populated dynamically -->
+                </div>
+              </div>
+
+              <div class="filter-group">
+                <h6>
+                  <i class="bi bi-currency-rupee me-2"></i>Price Range (PKR)
+                </h6>
+                <div class="price-range">
+                  <input
+                    type="range"
+                    class="form-range"
+                    min="0"
+                    max="50000"
+                    step="1000"
+                    id="priceRange"
+                    value="50000"
+                  />
+                  <div class="price-inputs">
+                    <input
+                      type="number"
+                      class="form-control form-control-sm"
+                      placeholder="Min"
+                      id="minPrice"
+                      value="0"
+                    />
+                    <input
+                      type="number"
+                      class="form-control form-control-sm"
+                      placeholder="Max"
+                      id="maxPrice"
+                      value="50000"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="filter-group">
+                <h6><i class="bi bi-star me-2"></i>Rating</h6>
+                <select class="form-select form-select-sm" id="ratingFilter">
+                  <option value="0">All Ratings</option>
+                  <option value="4">4+ Stars</option>
+                  <option value="3">3+ Stars</option>
+                </select>
+              </div>
+
+              <button class="apply-filter-btn" id="applyFilters">
+                <i class="bi bi-funnel me-2"></i>Apply Filters
+              </button>
+              <button
+                class="btn btn-link text-muted w-100 mt-2 btn-sm"
+                id="clearFilters"
+              >
+                Clear All
+              </button>
+            </div>
+          </div>
+
+          <!-- Cars Grid -->
+          <div class="col-lg-9">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h4 class="mb-0">
+                Available Cars
+                <span class="text-muted fs-6" id="carsCount"></span>
+              </h4>
+              <select class="form-select form-select-sm w-auto" id="sortBy">
+                <option value="default">Default</option>
+                <option value="priceLow">Price: Low to High</option>
+                <option value="priceHigh">Price: High to Low</option>
+                <option value="newest">Newest First</option>
+              </select>
+            </div>
+
+            <div id="carsContainer" class="cars-grid">
+              <!-- Cars will be injected here -->
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination-container">
+              <nav>
+                <ul class="pagination" id="pagination">
+                  <!-- Pagination will be injected -->
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <h5>
+              <i class="bi bi-car-front-fill text-warning me-2"></i>Rent-a-Car
+            </h5>
+            <p class="text-muted small">
+              Pakistan's most trusted car rental platform. 1000+ cars, 20+
+              cities, 10k+ happy customers.
+            </p>
+          </div>
+          <div class="col-md-2">
+            <h6 class="small">Quick Links</h6>
+            <ul class="footer-links">
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+          <div class="col-md-2">
+            <h6 class="small">Legal</h6>
+            <ul class="footer-links">
+              <li><a href="#">Terms</a></li>
+              <li><a href="#">Privacy</a></li>
+              <li><a href="#">Cancellation</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h6 class="small">Download App</h6>
+            <div class="d-flex gap-2">
+              <span class="badge bg-dark p-2">Google Play</span>
+              <span class="badge bg-dark p-2">App Store</span>
+            </div>
+            <div class="mt-3">
+              <i class="bi bi-facebook me-2"></i>
+              <i class="bi bi-instagram me-2"></i>
+              <i class="bi bi-twitter"></i>
+            </div>
+          </div>
+        </div>
+        <hr class="mt-3 mb-2 bg-secondary" />
+        <div class="text-center text-muted small">
+          &copy; 2024 Rent-a-Car Pakistan. All rights reserved.
+        </div>
+      </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div class="modal fade" id="bookingModal" tabindex="-1">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header bg-dark text-white py-2">
+            <h6 class="modal-title">
+              <i class="bi bi-calendar-plus me-2"></i>
+              Book: <span id="modalCarName"></span>
+            </h6>
+            <button
+              type="button"
+              class="btn-close btn-close-white btn-sm"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body py-3">
+            <form id="bookingForm">
+              <input type="hidden" id="modalCarId" />
+              <div class="mb-2">
+                <label class="form-label small">Start Date</label>
+                <input
+                  type="date"
+                  class="form-control form-control-sm"
+                  id="startDate"
+                  required
+                />
+              </div>
+              <div class="mb-2">
+                <label class="form-label small">End Date</label>
+                <input
+                  type="date"
+                  class="form-control form-control-sm"
+                  id="endDate"
+                  required
+                />
+              </div>
+              <div class="mb-2">
+                <label class="form-label small">Rental Type</label>
+                <select
+                  class="form-select form-select-sm"
+                  id="durationType"
+                  required
+                >
+                  <option value="hour">Per Hour</option>
+                  <option value="day">Per Day</option>
+                  <option value="week">Per Week</option>
+                  <option value="month">Per Month</option>
+                </select>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer py-2">
+            <button
+              type="button"
+              class="btn btn-secondary btn-sm"
+              data-bs-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary btn-sm"
+              id="submitBooking"
+            >
+              Book Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      (function () {
+        // Rent-a-Car Pakistan ki 15 cars with proper brands and types
+        const carData = [
+          // Suzuki Cars
+          {
+            id: 1,
+            name: "Suzuki Cultus",
+            brand: "Suzuki",
+            type: "Hatchback",
+            model: "2023",
+            pricePerDay: 3000,
+            pricePerHour: 500,
+            pricePerWeek: 18000,
+            pricePerMonth: 65000,
+            image:
+              "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=400&h=250&fit=crop",
+            rating: 4.3,
+            isNew: true,
+            isHot: true,
+            isTopSelling: true,
+          },
+          {
+            id: 2,
+            name: "Suzuki Alto",
+            brand: "Suzuki",
+            type: "Hatchback",
+            model: "2023",
+            pricePerDay: 2500,
+            pricePerHour: 400,
+            pricePerWeek: 15000,
+            pricePerMonth: 55000,
+            image:
+              "https://images.unsplash.com/photo-1550355291-bbee04a92027?w=400&h=250&fit=crop",
+            rating: 4.1,
+            isNew: false,
+            isHot: false,
+            isTopSelling: true,
+          },
+          {
+            id: 3,
+            name: "Suzuki Wagon R",
+            brand: "Suzuki",
+            type: "Hatchback",
+            model: "2023",
+            pricePerDay: 2800,
+            pricePerHour: 450,
+            pricePerWeek: 16800,
+            pricePerMonth: 60000,
+            image:
+              "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=400&h=250&fit=crop",
+            rating: 4.2,
+            isNew: true,
+            isHot: false,
+            isTopSelling: false,
+          },
+          {
+            id: 4,
+            name: "Suzuki Swift",
+            brand: "Suzuki",
+            type: "Hatchback",
+            model: "2022",
+            pricePerDay: 3500,
+            pricePerHour: 600,
+            pricePerWeek: 21000,
+            pricePerMonth: 75000,
+            image:
+              "https://images.unsplash.com/photo-1550355291-bbee04a92027?w=400&h=250&fit=crop",
+            rating: 4.4,
+            isNew: false,
+            isHot: true,
+            isTopSelling: false,
+          },
+
+          // Toyota Cars
+          {
+            id: 5,
+            name: "Toyota Corolla",
+            brand: "Toyota",
+            type: "Sedan",
+            model: "2023",
+            pricePerDay: 5000,
+            pricePerHour: 800,
+            pricePerWeek: 30000,
+            pricePerMonth: 110000,
+            image:
+              "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=400&h=250&fit=crop",
+            rating: 4.7,
+            isNew: true,
+            isHot: true,
+            isTopSelling: true,
+          },
+          {
+            id: 6,
+            name: "Toyota Yaris",
+            brand: "Toyota",
+            type: "Sedan",
+            model: "2022",
+            pricePerDay: 4500,
+            pricePerHour: 750,
+            pricePerWeek: 27000,
+            pricePerMonth: 95000,
+            image:
+              "https://images.unsplash.com/photo-1550355291-bbee04a92027?w=400&h=250&fit=crop",
+            rating: 4.3,
+            isNew: false,
+            isHot: false,
+            isTopSelling: true,
+          },
+          {
+            id: 7,
+            name: "Toyota Fortuner",
+            brand: "Toyota",
+            type: "SUV",
+            model: "2023",
+            pricePerDay: 12000,
+            pricePerHour: 2000,
+            pricePerWeek: 72000,
+            pricePerMonth: 250000,
+            image:
+              "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=400&h=250&fit=crop",
+            rating: 4.9,
+            isNew: true,
+            isHot: true,
+            isTopSelling: true,
+          },
+          {
+            id: 8,
+            name: "Toyota Revo",
+            brand: "Toyota",
+            type: "Pickup",
+            model: "2023",
+            pricePerDay: 8000,
+            pricePerHour: 1300,
+            pricePerWeek: 48000,
+            pricePerMonth: 170000,
+            image:
+              "https://images.unsplash.com/photo-1566024287286-457247b70310?w=400&h=250&fit=crop",
+            rating: 4.6,
+            isNew: true,
+            isHot: false,
+            isTopSelling: false,
+          },
+
+          // Honda Cars
+          {
+            id: 9,
+            name: "Honda Civic",
+            brand: "Honda",
+            type: "Sedan",
+            model: "2023",
+            pricePerDay: 5500,
+            pricePerHour: 900,
+            pricePerWeek: 33000,
+            pricePerMonth: 120000,
+            image:
+              "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=400&h=250&fit=crop",
+            rating: 4.6,
+            isNew: true,
+            isHot: true,
+            isTopSelling: false,
+          },
+          {
+            id: 10,
+            name: "Honda City",
+            brand: "Honda",
+            type: "Sedan",
+            model: "2022",
+            pricePerDay: 4800,
+            pricePerHour: 800,
+            pricePerWeek: 28800,
+            pricePerMonth: 100000,
+            image:
+              "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=400&h=250&fit=crop",
+            rating: 4.4,
+            isNew: false,
+            isHot: false,
+            isTopSelling: true,
+          },
+          {
+            id: 11,
+            name: "Honda BR-V",
+            brand: "Honda",
+            type: "SUV",
+            model: "2022",
+            pricePerDay: 8000,
+            pricePerHour: 1300,
+            pricePerWeek: 48000,
+            pricePerMonth: 170000,
+            image:
+              "https://images.unsplash.com/photo-1566024287286-457247b70310?w=400&h=250&fit=crop",
+            rating: 4.5,
+            isNew: false,
+            isHot: true,
+            isTopSelling: false,
+          },
+
+          // Kia Cars
+          {
+            id: 12,
+            name: "Kia Sportage",
+            brand: "Kia",
+            type: "SUV",
+            model: "2023",
+            pricePerDay: 9000,
+            pricePerHour: 1500,
+            pricePerWeek: 54000,
+            pricePerMonth: 190000,
+            image:
+              "https://images.unsplash.com/photo-1550355291-bbee04a92027?w=400&h=250&fit=crop",
+            rating: 4.8,
+            isNew: true,
+            isHot: true,
+            isTopSelling: true,
+          },
+          {
+            id: 13,
+            name: "Kia Picanto",
+            brand: "Kia",
+            type: "Hatchback",
+            model: "2023",
+            pricePerDay: 3200,
+            pricePerHour: 550,
+            pricePerWeek: 19200,
+            pricePerMonth: 70000,
+            image:
+              "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=400&h=250&fit=crop",
+            rating: 4.2,
+            isNew: true,
+            isHot: false,
+            isTopSelling: false,
+          },
+
+          // Hyundai Cars
+          {
+            id: 14,
+            name: "Hyundai Elantra",
+            brand: "Hyundai",
+            type: "Sedan",
+            model: "2023",
+            pricePerDay: 6000,
+            pricePerHour: 1000,
+            pricePerWeek: 36000,
+            pricePerMonth: 130000,
+            image:
+              "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=400&h=250&fit=crop",
+            rating: 4.4,
+            isNew: true,
+            isHot: false,
+            isTopSelling: true,
+          },
+          {
+            id: 15,
+            name: "Hyundai Tucson",
+            brand: "Hyundai",
+            type: "SUV",
+            model: "2022",
+            pricePerDay: 8500,
+            pricePerHour: 1400,
+            pricePerWeek: 51000,
+            pricePerMonth: 180000,
+            image:
+              "https://images.unsplash.com/photo-1566024287286-457247b70310?w=400&h=250&fit=crop",
+            rating: 4.5,
+            isNew: false,
+            isHot: true,
+            isTopSelling: false,
+          },
+        ];
+
+        // Initialize localStorage with car data if empty
+        if (!localStorage.getItem("cars")) {
+          localStorage.setItem("cars", JSON.stringify(carData));
+        }
+
+        let cars = JSON.parse(localStorage.getItem("cars")) || carData;
+        let filteredCars = [...cars];
+        let currentPage = 1;
+        const carsPerPage = 6;
+
+        // Populate badge cards section
+        function renderBadgeCards() {
+          const container = document.getElementById("badgeCardsContainer");
+          if (!container) return;
+
+          const badgeCars = cars
+            .filter((c) => c.isNew || c.isHot || c.isTopSelling)
+            .slice(0, 6);
+
+          let html = "";
+          badgeCars.forEach((car) => {
+            let badgeClass = "";
+            let badgeText = "";
+            if (car.isNew) {
+              badgeClass = "badge-new";
+              badgeText = "NEW";
+            } else if (car.isHot) {
+              badgeClass = "badge-hot";
+              badgeText = "HOT";
+            } else if (car.isTopSelling) {
+              badgeClass = "badge-top";
+              badgeText = "TOP";
+            }
+
+            html += `
+                        <div class="col-4 col-md-2">
+                            <div class="badge-card" onclick="openBookingModal(${car.id})">
+                                <div class="badge-img">
+                                    <img src="${car.image}" alt="${car.name}" onerror="this.src='https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=400&h=250&fit=crop'">
+                                    <span class="badge-tag ${badgeClass}">${badgeText}</span>
+                                </div>
+                                <div class="badge-content">
+                                    <h4>${car.name}</h4>
+                                    <p>${car.type}</p>
+                                    <div class="badge-price">PKR ${car.pricePerDay}<span>/day</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+          });
+          container.innerHTML = html;
+        }
+
+        // Populate filter options
+        function populateFilters() {
+          const brands = [...new Set(cars.map((c) => c.brand))];
+          const types = [...new Set(cars.map((c) => c.type))];
+
+          let brandHtml = "";
+          brands.forEach((brand) => {
+            const count = cars.filter((c) => c.brand === brand).length;
+            brandHtml += `
+                        <div class="filter-option">
+                            <input type="checkbox" class="brand-filter" value="${brand}" id="brand-${brand}">
+                            <label for="brand-${brand}">${brand}</label>
+                            <span class="count">(${count})</span>
+                        </div>
+                    `;
+          });
+          document.getElementById("brandFilters").innerHTML = brandHtml;
+
+          let typeHtml = "";
+          types.forEach((type) => {
+            const count = cars.filter((c) => c.type === type).length;
+            typeHtml += `
+                        <div class="filter-option">
+                            <input type="checkbox" class="type-filter" value="${type}" id="type-${type}">
+                            <label for="type-${type}">${type}</label>
+                            <span class="count">(${count})</span>
+                        </div>
+                    `;
+          });
+          document.getElementById("typeFilters").innerHTML = typeHtml;
+        }
+
+        // Render cars
+        function renderCars() {
+          const container = document.getElementById("carsContainer");
+          const countSpan = document.getElementById("carsCount");
+
+          const start = (currentPage - 1) * carsPerPage;
+          const end = start + carsPerPage;
+          const paginatedCars = filteredCars.slice(start, end);
+
+          if (countSpan)
+            countSpan.textContent = `(${filteredCars.length} cars)`;
+
+          if (paginatedCars.length === 0) {
+            container.innerHTML =
+              '<div class="col-12 text-center py-5"><h5>No cars match your filters</h5></div>';
+          } else {
+            let html = "";
+            paginatedCars.forEach((car) => {
+              html += `
+                            <div class="car-card" onclick="openBookingModal(${car.id})">
+                                <div class="car-card-img">
+                                    <img src="${car.image}" alt="${car.name}" onerror="this.src='https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=400&h=250&fit=crop'">
+                                    <span class="car-status">Available</span>
+                                    <span class="car-type">${car.type}</span>
+                                </div>
+                                <div class="car-card-body">
+                                    <h3 class="car-card-title">${car.name}</h3>
+                                    <div class="car-card-meta">
+                                        <i class="bi bi-calendar"></i> ${car.model} 
+                                        <i class="bi bi-star-fill text-warning ms-2"></i> ${car.rating}
+                                    </div>
+                                    <div class="car-card-price">
+                                        PKR ${car.pricePerDay} <span>/day</span>
+                                    </div>
+                                    <div class="car-features-sm">
+                                        <span><i class="bi bi-clock"></i> PKR ${car.pricePerHour}/hr</span>
+                                        <span><i class="bi bi-calendar-week"></i> PKR ${car.pricePerWeek}/wk</span>
+                                    </div>
+                                    <button class="book-btn-sm" onclick="event.stopPropagation(); openBookingModal(${car.id})">
+                                        <i class="bi bi-calendar-check me-2"></i>Rent Now
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+            });
+            container.innerHTML = html;
+          }
+
+          renderPagination();
+        }
+
+        // Render pagination
+        function renderPagination() {
+          const totalPages = Math.ceil(filteredCars.length / carsPerPage);
+          const paginationEl = document.getElementById("pagination");
+          if (!paginationEl) return;
+
+          let html = "";
+
+          html += `<li class="page-item ${currentPage === 1 ? "disabled" : ""}">
+                    <a class="page-link" href="#" data-page="${
+                      currentPage - 1
+                    }">Previous</a>
+                </li>`;
+
+          for (let i = 1; i <= totalPages; i++) {
+            html += `<li class="page-item ${currentPage === i ? "active" : ""}">
+                        <a class="page-link" href="#" data-page="${i}">${i}</a>
+                    </li>`;
+          }
+
+          html += `<li class="page-item ${
+            currentPage === totalPages ? "disabled" : ""
+          }">
+                    <a class="page-link" href="#" data-page="${
+                      currentPage + 1
+                    }">Next</a>
+                </li>`;
+
+          paginationEl.innerHTML = html;
+
+          // Add click handlers
+          document.querySelectorAll(".page-link").forEach((link) => {
+            link.addEventListener("click", function (e) {
+              e.preventDefault();
+              const page = parseInt(this.dataset.page);
+              if (!isNaN(page) && page >= 1 && page <= totalPages) {
+                currentPage = page;
+                renderCars();
+              }
+            });
+          });
+        }
+
+        // Apply filters
+        function applyFilters() {
+          const selectedBrands = [
+            ...document.querySelectorAll(".brand-filter:checked"),
+          ].map((cb) => cb.value);
+          const selectedTypes = [
+            ...document.querySelectorAll(".type-filter:checked"),
+          ].map((cb) => cb.value);
+          const minPrice =
+            parseInt(document.getElementById("minPrice").value) || 0;
+          const maxPrice =
+            parseInt(document.getElementById("maxPrice").value) || 50000;
+          const rating =
+            parseInt(document.getElementById("ratingFilter").value) || 0;
+          const searchTerm = document
+            .getElementById("searchInput")
+            .value.toLowerCase();
+
+          filteredCars = cars.filter((car) => {
+            if (
+              selectedBrands.length > 0 &&
+              !selectedBrands.includes(car.brand)
+            )
+              return false;
+            if (selectedTypes.length > 0 && !selectedTypes.includes(car.type))
+              return false;
+            if (car.pricePerDay < minPrice || car.pricePerDay > maxPrice)
+              return false;
+            if (rating > 0 && car.rating < rating) return false;
+            if (
+              searchTerm &&
+              !car.name.toLowerCase().includes(searchTerm) &&
+              !car.brand.toLowerCase().includes(searchTerm)
+            )
+              return false;
+            return true;
+          });
+
+          const sortBy = document.getElementById("sortBy").value;
+          if (sortBy === "priceLow") {
+            filteredCars.sort((a, b) => a.pricePerDay - b.pricePerDay);
+          } else if (sortBy === "priceHigh") {
+            filteredCars.sort((a, b) => b.pricePerDay - a.pricePerDay);
+          } else if (sortBy === "newest") {
+            filteredCars.sort((a, b) => b.model.localeCompare(a.model));
+          }
+
+          currentPage = 1;
+          renderCars();
+        }
+
+        // Clear filters
+        function clearFilters() {
+          document
+            .querySelectorAll(".brand-filter, .type-filter")
+            .forEach((cb) => (cb.checked = false));
+          document.getElementById("minPrice").value = 0;
+          document.getElementById("maxPrice").value = 50000;
+          document.getElementById("priceRange").value = 50000;
+          document.getElementById("ratingFilter").value = "0";
+          document.getElementById("searchInput").value = "";
+          document.getElementById("sortBy").value = "default";
+
+          filteredCars = [...cars];
+          currentPage = 1;
+          renderCars();
+        }
+
+        // Open booking modal
+        window.openBookingModal = function (carId) {
+          const car = cars.find((c) => c.id === carId);
+          if (!car) return;
+
+          const currentUser = localStorage.getItem("currentUser");
+
+          if (!currentUser) {
+            alert("Please login first to book a car");
+            window.location.href = "login.html?redirect=index.html";
+            return;
+          }
+
+          document.getElementById("modalCarName").textContent = car.name;
+          document.getElementById("modalCarId").value = car.id;
+
+          const today = new Date().toISOString().split("T")[0];
+          document.getElementById("startDate").min = today;
+          document.getElementById("endDate").min = today;
+
+          const modal = new bootstrap.Modal(
+            document.getElementById("bookingModal")
+          );
+          modal.show();
+        };
+
+        // Submit booking
+        document
+          .getElementById("submitBooking")
+          ?.addEventListener("click", function () {
+            const currentUser = localStorage.getItem("currentUser");
+            if (!currentUser) {
+              alert("Session expired. Please login again.");
+              window.location.href = "login.html";
+              return;
+            }
+
+            const carId = document.getElementById("modalCarId").value;
+            const startDate = document.getElementById("startDate").value;
+            const endDate = document.getElementById("endDate").value;
+            const durationType = document.getElementById("durationType").value;
+
+            if (!startDate || !endDate) {
+              alert("Please select dates");
+              return;
+            }
+
+            if (new Date(endDate) < new Date(startDate)) {
+              alert("End date must be after start date");
+              return;
+            }
+
+            const bookings = JSON.parse(localStorage.getItem("bookings")) || [];
+            const newBooking = {
+              id: Date.now(),
+              carId: Number(carId),
+              userId: JSON.parse(currentUser).id,
+              startDate,
+              endDate,
+              durationType,
+              status: "pending",
+              createdAt: new Date().toISOString(),
+            };
+
+            bookings.push(newBooking);
+            localStorage.setItem("bookings", JSON.stringify(bookings));
+
+            alert("Booking request submitted successfully!");
+
+            const modalEl = document.getElementById("bookingModal");
+            const modal = bootstrap.Modal.getInstance(modalEl);
+            if (modal) modal.hide();
+          });
+
+        // Event listeners
+        document
+          .getElementById("applyFilters")
+          ?.addEventListener("click", applyFilters);
+        document
+          .getElementById("clearFilters")
+          ?.addEventListener("click", clearFilters);
+        document
+          .getElementById("sortBy")
+          ?.addEventListener("change", applyFilters);
+        document
+          .getElementById("searchInput")
+          ?.addEventListener("keyup", function (e) {
+            if (e.key === "Enter") applyFilters();
+          });
+
+        // Price range sync
+        document
+          .getElementById("priceRange")
+          ?.addEventListener("input", function (e) {
+            document.getElementById("maxPrice").value = e.target.value;
+          });
+
+        // Initialize
+        document.addEventListener("DOMContentLoaded", function () {
+          populateFilters();
+          renderBadgeCards();
+          renderCars();
+        });
+      })();
+    </script>
+  </body>
+</html>
